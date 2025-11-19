@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "Django", "AI", "Postgres"],
     bossFight: "Market access for rural farmers",
     type: "web",
-    link: "https://farmhut.africa"
+    link: "https://www.crunchbase.com/organization/farmhut"
   },
   {
     id: "hubflo",
@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
     techStack: ["DJI Mavic", "Premiere Pro", "Lightroom"],
     bossFight: "The Perfect Shot",
     type: "other",
-    link: "#"
+    link: "https://munyamakosa.pixieset.com/theconceptofsonder/"
   },
   {
     id: "dj_lab",
@@ -50,8 +50,7 @@ export const PROJECTS: Project[] = [
     description: "Aspiring DJ curating Afro-Tech and Deep House sets. Exploring the intersection of code, rhythm, and sound.",
     techStack: ["Rekordbox", "Pioneer DJ", "SoundCloud"],
     bossFight: "Setting the Vibe",
-    type: "other",
-    link: "#"
+    type: "other"
   }
 ];
 
@@ -87,8 +86,8 @@ export const ACHIEVEMENTS: Achievement[] = [
 ];
 
 export const SOCIALS: SocialLink[] = [
-  { platform: "GitHub", url: "https://github.com/munya-makosa", icon: "github" },
-  { platform: "LinkedIn", url: "https://linkedin.com/in/munya-makosa", icon: "linkedin" },
-  { platform: "Twitter", url: "https://twitter.com/munya_makosa", icon: "twitter" },
-  { platform: "YouTube", url: "https://youtube.com/@munya_makosa", icon: "youtube" },
+  { platform: "GitHub", url: "https://github.com/farmhutsoftwareteam", icon: "github" },
+  { platform: "LinkedIn", url: "https://www.linkedin.com/in/makosa-munya/", icon: "linkedin" },
+  { platform: "X", url: "https://x.com/makosamunyaa", icon: "twitter" },
+  { platform: "Upwork", url: "https://www.upwork.com/freelancers/~018e86cb6f5afe5cdf?mp_source=share", icon: "briefcase" },
 ];

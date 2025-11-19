@@ -24,13 +24,13 @@ export const About: React.FC = () => {
                   <span className="text-retro-green font-bold">Origin:</span> Zimbabwe 🇿🇼
                 </p>
                 <p>
-                  <span className="text-retro-green font-bold">Class:</span> Tech Entrepreneur / Builder
+                  <span className="text-retro-green font-bold">Class:</span> Software Engineer / Tech Entrepreneur
                 </p>
                 <p>
-                  Founder of <span className="text-retro-cyan">Farmhut Africa</span>, an AI-powered marketplace connecting rural farmers to markets. Anzisha Prize Fellow with a passion for building tools that solve real problems.
+                  Munyaradzi "Munya" Makosa is a Zimbabwean software engineer and tech entrepreneur who builds mobile apps, AI-powered tools and marketplaces. He's a <span className="text-retro-cyan">Top Rated Plus freelancer on Upwork</span> specialising in React Native, Expo, Next.js, Supabase and OpenAI integrations, with thousands of hours delivered for global clients.
                 </p>
                 <p>
-                  Currently equipping <span className="text-retro-purple">AI Agents</span> and shipping apps with React Native & Supabase. Living and working globally.
+                  Founder of <span className="text-retro-cyan">Farmhut Africa</span>, an AI-powered marketplace connecting rural farmers to markets. <span className="text-retro-purple">Anzisha Prize Fellow</span> with a passion for building tools that solve real problems.
                 </p>
                 
                 <div className="mt-6 grid grid-cols-2 gap-4">

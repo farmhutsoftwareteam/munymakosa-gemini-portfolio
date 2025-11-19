@@ -1,15 +1,16 @@
 import React from 'react';
 import { RetroButton } from './RetroUI';
 import { SOCIALS } from '../constants';
-import { Github, Linkedin, Twitter, Youtube, Mail, Coffee } from 'lucide-react';
+import { Github, Linkedin, Twitter, Briefcase, Mail, Coffee, ExternalLink } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const getIcon = (name: string) => {
     switch(name) {
       case 'GitHub': return <Github size={20} />;
       case 'LinkedIn': return <Linkedin size={20} />;
-      case 'Twitter': return <Twitter size={20} />;
-      case 'YouTube': return <Youtube size={20} />;
+      case 'Twitter':
+      case 'X': return <Twitter size={20} />;
+      case 'Upwork': return <Briefcase size={20} />;
       default: return <ExternalLink size={20} />;
     }
   };
@@ -29,7 +30,7 @@ export const Contact: React.FC = () => {
         </p>
 
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">
-          <a href="mailto:munya@example.com" className="w-full md:w-auto">
+          <a href="mailto:munya@munyamakosa.com" className="w-full md:w-auto">
             <RetroButton className="w-full md:w-auto flex justify-center">
                <Mail className="mr-2 w-4 h-4" /> START PROJECT
             </RetroButton>
@@ -61,5 +62,3 @@ export const Contact: React.FC = () => {
     </section>
   );
 };
-// Import fix
-import { ExternalLink } from 'lucide-react';
