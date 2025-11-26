@@ -9,8 +9,8 @@ export const RetroOverlay: React.FC = () => {
       {/* Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
       
-      {/* CRT Flicker Animation */}
-      <div className="absolute inset-0 bg-white opacity-[0.02] animate-pulse pointer-events-none"></div>
+      {/* CRT Flicker - static, no animation */}
+      <div className="absolute inset-0 bg-white opacity-[0.02] pointer-events-none"></div>
     </div>
   );
 };
