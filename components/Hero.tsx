@@ -99,11 +99,11 @@ export const Hero: React.FC = () => {
                 </h1>
 
                 <h2 className="font-terminal text-xl md:text-2xl text-retro-cyan mb-6 border-b border-retro-green/30 pb-4 inline-block">
-                  Serial App Dev · Indie Founder · AI Builder
+                  Software Engineer · Indie Founder · AI Builder
                 </h2>
 
                 <p className="text-gray-400 text-lg max-w-lg mb-8">
-                  I build apps, AI tools & products that ship fast and actually get used.
+                  I build mobile apps, SaaS products & AI tools that ship fast and actually get used.
                   From <span className="text-retro-green">Rural Zim</span> to the <span className="text-retro-purple">Global Stage</span>.
                 </p>
 

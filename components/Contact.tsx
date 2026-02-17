@@ -25,8 +25,8 @@ export const Contact: React.FC = () => {
         <h2 className="font-pixel text-3xl md:text-4xl text-white mb-6">START CO-OP MODE?</h2>
         
         <p className="font-terminal text-xl text-gray-300 mb-10">
-          Want to build your next app, AI tool, or marketplace? 
-          I love working with founders and teams who want to ship fast.
+          Need a React Native app, SaaS product, or AI-powered tool built?
+          I work with founders and teams who want to ship fast and scale.
         </p>
 
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">

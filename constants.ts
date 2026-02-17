@@ -2,7 +2,7 @@ import { Project, Skill, Achievement, SocialLink } from './types';
 
 export const INTRO_TEXT = [
   "Initialising boot sequence...",
-  "Loading modules: React, Expo, Supabase, AI...",
+  "Loading modules: React, Expo, Supabase, Hono, AI...",
   "System Check: OPTIMAL",
   "Welcome to Munyaradzi_Makosa.exe"
 ];
@@ -11,7 +11,9 @@ export const SKILLS: Skill[] = [
   { name: "React Native / Expo", level: 95, icon: "smartphone", category: "mobile" },
   { name: "Next.js / React", level: 90, icon: "layout", category: "frontend" },
   { name: "Supabase / Postgres", level: 85, icon: "database", category: "backend" },
+  { name: "Hono / Node.js", level: 82, icon: "zap", category: "backend" },
   { name: "AI Agents / LLMs", level: 80, icon: "cpu", category: "ai" },
+  { name: "TypeScript", level: 88, icon: "code", category: "frontend" },
   { name: "Product Design", level: 75, icon: "pen-tool", category: "frontend" },
   { name: "Drone Piloting", level: 65, icon: "camera", category: "mobile" },
 ];

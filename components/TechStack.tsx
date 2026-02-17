@@ -9,11 +9,13 @@ export const TechStack: React.FC = () => {
     { name: "Expo", buff: "No Config", type: "Tool" },
     { name: "Supabase", buff: "Instant Backend", type: "Magic" },
     { name: "Next.js", buff: "SEO Boost", type: "Weapon" },
+    { name: "Hono", buff: "Ultra Fast API", type: "Weapon" },
     { name: "TypeScript", buff: "Type Safety", type: "Armor" },
     { name: "Tailwind", buff: "+20 Style", type: "Armor" },
     { name: "Node.js", buff: "Server Side", type: "Core" },
     { name: "Postgres", buff: "Data Store", type: "Storage" },
     { name: "OpenAI", buff: "Intelligence", type: "Summon" },
+    { name: "Claude AI", buff: "Code Partner", type: "Summon" },
     { name: "Figma", buff: "Design Blueprint", type: "Map" },
   ];
 
@@ -27,7 +29,7 @@ export const TechStack: React.FC = () => {
           <h2 className="font-pixel text-2xl md:text-3xl text-white">INVENTORY / LOADOUT</h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {items.map((item, idx) => (
             <motion.div
               key={idx}

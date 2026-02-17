@@ -27,7 +27,7 @@ export const About: React.FC = () => {
                   <span className="text-retro-green font-bold">Class:</span> Software Engineer / Tech Entrepreneur
                 </p>
                 <p>
-                  Munyaradzi "Munya" Makosa is a Zimbabwean software engineer and tech entrepreneur who builds mobile apps, AI-powered tools and marketplaces. He's a <span className="text-retro-cyan">Top Rated Plus freelancer on Upwork</span> specialising in React Native, Expo, Next.js, Supabase and OpenAI integrations, with thousands of hours delivered for global clients.
+                  Munyaradzi "Munya" Makosa is a Zimbabwean software engineer and tech entrepreneur who builds mobile apps, AI-powered tools and SaaS products. He's a <span className="text-retro-cyan">Top Rated Plus freelancer on Upwork</span> specialising in React Native, Expo, Next.js, Hono, Supabase and AI integrations, with thousands of hours delivered for global clients.
                 </p>
                 <p>
                   Founder of <span className="text-retro-cyan">Farmhut Africa</span>, an AI-powered marketplace connecting rural farmers to markets. <span className="text-retro-purple">Anzisha Prize Fellow</span> with a passion for building tools that solve real problems.
