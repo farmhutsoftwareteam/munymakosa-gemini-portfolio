@@ -99,7 +99,7 @@ export const Hero: React.FC = () => {
                 </h1>
 
                 <h2 className="font-terminal text-xl md:text-2xl text-retro-cyan mb-6 border-b border-retro-green/30 pb-4 inline-block">
-                  Software Engineer · Indie Founder · AI Builder
+                  Product Architect · Indie Founder · AI Builder
                 </h2>
 
                 <p className="text-gray-400 text-lg max-w-lg mb-8">
