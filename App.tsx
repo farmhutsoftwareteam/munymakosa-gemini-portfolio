@@ -47,7 +47,7 @@ const App: React.FC = () => {
         <div className="container mx-auto text-center px-6">
            <div className="font-pixel text-xs text-retro-purple mb-2">SIDE QUESTS</div>
            <p className="font-terminal text-xl text-white max-w-2xl mx-auto leading-relaxed">
-             "When I'm not building apps, I'm capturing the world with <span className="text-retro-green">Drone Photography</span>, mixing <span className="text-retro-green">Afro-House</span> sets, or clutching in COD."
+             "When I'm not building apps, I'm capturing the world with <span className="text-retro-green">Drone Photography</span>, mixing <a href="https://dj.munyamakosa.com" target="_blank" rel="noreferrer" className="text-retro-green hover:text-retro-cyan underline underline-offset-4 decoration-retro-green/50 hover:decoration-retro-cyan transition-colors">Afro-House</a> sets, or clutching in COD."
            </p>
         </div>
       </section>

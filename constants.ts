@@ -27,6 +27,15 @@ export const PROJECTS: Project[] = [
     link: "https://www.crunchbase.com/organization/farmhut"
   },
   {
+    id: "freyt365",
+    title: "Freyt365",
+    description: "Finance and fuel platform built for transporters in Southern Africa. Integrated tools for fleet financial management and fuel procurement across the region.",
+    techStack: ["Next.js", "React", "Fintech", "API"],
+    bossFight: "Transporter cash flow chaos",
+    type: "web",
+    link: "https://freyt365.com"
+  },
+  {
     id: "hubflo",
     title: "Hubflo AI",
     description: "Connecting AI assistants to workflow tools like Slack and Gmail to automate daily ops.",
@@ -34,6 +43,15 @@ export const PROJECTS: Project[] = [
     bossFight: "Workflow inefficiency",
     type: "ai",
     link: "#"
+  },
+  {
+    id: "dumbshirts",
+    title: "DumbShirts",
+    description: "E-commerce store selling one-of-one memetic artifacts. Every piece is unique — no restocks, no repeats. Wearable internet culture.",
+    techStack: ["E-commerce", "Shopify", "Design"],
+    bossFight: "Mass-produced mediocrity",
+    type: "web",
+    link: "https://dumbshirts.co.za"
   },
   {
     id: "drone_ops",
@@ -47,10 +65,11 @@ export const PROJECTS: Project[] = [
   {
     id: "dj_lab",
     title: "The Mix Lab",
-    description: "Aspiring DJ curating Afro-Tech and Deep House sets. Exploring the intersection of code, rhythm, and sound.",
+    description: "DJ sets blending Afro-Tech, Deep House and Amapiano. Live mixes, curated sets, and the intersection of code and rhythm.",
     techStack: ["Rekordbox", "Pioneer DJ", "SoundCloud"],
     bossFight: "Setting the Vibe",
-    type: "other"
+    type: "other",
+    link: "https://dj.munyamakosa.com"
   }
 ];
 

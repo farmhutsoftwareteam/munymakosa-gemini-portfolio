@@ -55,16 +55,18 @@ export const Projects: React.FC = () => {
                   </div>
                 </div>
 
+                {project.link && project.link !== '#' && (
                 <div>
-                   <a 
-                     href={project.link} 
-                     target="_blank" 
+                   <a
+                     href={project.link}
+                     target="_blank"
                      rel="noreferrer"
                      className="inline-flex items-center gap-2 font-pixel text-xs text-retro-green hover:text-retro-cyan transition-colors uppercase border-b-2 border-transparent hover:border-retro-cyan pb-1"
                    >
                      Start Game <ExternalLink size={12} />
                    </a>
                 </div>
+                )}
               </RetroCard>
             </motion.div>
           ))}
