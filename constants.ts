@@ -18,6 +18,15 @@ export const SKILLS: Skill[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "menyu",
+    title: "Menyu.pro",
+    description: "SaaS menu design studio for restaurants. One workspace to create, style, and publish digital QR menus, PDFs, and print formats — change once, update everywhere.",
+    techStack: ["Next.js", "Supabase", "Hono", "Postgres"],
+    bossFight: "Ugly restaurant menus",
+    type: "web",
+    link: "https://menyu.pro"
+  },
+  {
     id: "farmhut",
     title: "Farmhut Africa",
     description: "AI-powered marketplace connecting rural farmers directly to markets. Recognized by Anzisha Prize and MIT Solve.",
