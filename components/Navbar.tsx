@@ -10,9 +10,9 @@ export const Navbar: React.FC = () => {
           <span className="font-pixel text-xs text-white">MUNYA.DEV</span>
         </div>
 
-        <div className="hidden md:flex gap-4 pointer-events-auto">
+        <div className="hidden md:flex gap-4 pointer-events-auto items-center">
            {['About', 'Projects', 'Contact'].map((item) => (
-             <button 
+             <button
                key={item}
                onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
                className="font-pixel text-[10px] text-retro-green hover:text-white bg-retro-black/80 px-3 py-2 border border-transparent hover:border-retro-green transition-all"
@@ -20,6 +20,12 @@ export const Navbar: React.FC = () => {
                {item.toUpperCase()}
              </button>
            ))}
+           <a
+             href="/cv.html"
+             className="font-pixel text-[10px] text-retro-black bg-retro-green hover:bg-white px-3 py-2 border border-retro-green transition-all"
+           >
+             📄 CV
+           </a>
         </div>
       </div>
     </nav>

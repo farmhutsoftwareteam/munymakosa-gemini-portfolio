@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Munyaradzi Makosa — Product Architect & Software Engineer</title>
+  <meta name="description" content="CV of Munyaradzi Makosa — Product Architect, Software Engineer & Indie Founder. 6+ years building mobile apps, SaaS, and AI tools. Anzisha Prize Fellow. Hult Prize $100k winner. Top Rated Plus on Upwork. Cape Town, open to remote." />
+  <meta name="author" content="Munyaradzi Makosa" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --teal:        #0D9488;
+      --teal-hover:  #0F766E;
+      --teal-light:  #CCFBF1;
+      --teal-pale:   #F0FDF4;
+      --navy:        #0F172A;
+      --slate:       #334155;
+      --muted:       #64748B;
+      --subtle:      #94A3B8;
+      --border:      #E2E8F0;
+      --bg:          #EEF2F7;
+      --white:       #FFFFFF;
+      --text:        #0F172A;
+      --text-body:   #374151;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13.5px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─────────────────── TOP BAR ─────────────────── */
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 52px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 100;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .back-link {
+      color: var(--subtle);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--white); }
+
+    .topbar-divider {
+      width: 1px;
+      height: 18px;
+      background: #1E293B;
+    }
+
+    .topbar-label {
+      font-size: 12px;
+      color: #475569;
+      font-weight: 400;
+    }
+
+    .topbar-right { display: flex; gap: 8px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+      letter-spacing: 0.1px;
+    }
+    .btn:active { transform: translateY(1px); }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--teal-hover);
+      box-shadow: 0 2px 8px rgba(13,148,136,0.4);
+    }
+
+    /* ─────────────────── PAGE ─────────────────── */
+    .page {
+      max-width: 980px;
+      margin: 72px auto 56px;
+      background: var(--white);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* ─────────────────── HEADER ─────────────────── */
+    .cv-header {
+      background: var(--navy);
+      padding: 36px 48px 32px;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 28px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle grid decoration */
+    .cv-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #1E3A5F 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .avatar {
+      position: relative;
+      z-index: 1;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0D9488 0%, #0284C7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -1px;
+      border: 2px solid rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
+
+    .header-text { position: relative; z-index: 1; }
+
+    .header-text h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .header-role {
+      font-size: 11.5px;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px 0;
+    }
+
+    .contacts a, .contacts span {
+      font-size: 12px;
+      color: #CBD5E1;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .contacts a:hover { color: #5EEAD4; }
+
+    .vsep {
+      display: inline-block;
+      width: 1px;
+      height: 11px;
+      background: #2D3F55;
+      margin: 0 12px;
+      vertical-align: middle;
+    }
+
+    /* ─────────────────── BODY ─────────────────── */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 268px 1fr;
+    }
+
+    /* ─────────────────── SIDEBAR ─────────────────── */
+    .sidebar {
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      padding: 28px 22px;
+    }
+
+    /* ─────────────────── MAIN ─────────────────── */
+    .main {
+      padding: 28px 40px;
+    }
+
+    /* ─────────────────── SECTION ─────────────────── */
+    .section { margin-bottom: 26px; }
+    .section:last-child { margin-bottom: 0; }
+
+    .section-title {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 13px;
+      padding-bottom: 7px;
+      border-bottom: 1.5px solid var(--teal-light);
+    }
+
+    /* ─────────────────── UPWORK BADGE ─────────────────── */
+    .upwork-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--teal-pale);
+      border: 1px solid #A7F3D0;
+      border-radius: 7px;
+      padding: 10px 12px;
+      margin-bottom: 22px;
+    }
+    .live-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #16A34A;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(22,163,74,0.2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(22,163,74,0.2); }
+      50%       { box-shadow: 0 0 0 5px rgba(22,163,74,0.08); }
+    }
+    .upwork-text  { font-size: 12px; font-weight: 700; color: #15803D; }
+    .upwork-sub   { font-size: 10.5px; color: #4ADE80; margin-top: 1px; }
+
+    /* ─────────────────── SKILLS ─────────────────── */
+    .skill-group { margin-bottom: 12px; }
+
+    .skill-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-bottom: 5px;
+    }
+
+    .pills { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .pill {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .p-blue   { background: #EFF6FF; color: #1D4ED8; }
+    .p-teal   { background: #F0FDF4; color: #15803D; }
+    .p-amber  { background: #FFFBEB; color: #92400E; }
+    .p-purple { background: #F5F3FF; color: #6D28D9; }
+    .p-rose   { background: #FFF1F2; color: #BE123C; }
+
+    /* ─────────────────── AWARDS ─────────────────── */
+    .award {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      padding: 10px 11px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.15s;
+    }
+    .award:hover { border-color: var(--teal); }
+    .award-icon  { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+    .award-name  { font-size: 11.5px; font-weight: 700; color: #1E293B; line-height: 1.3; }
+    .award-sub   { font-size: 10.5px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
+
+    /* ─────────────────── EDUCATION ─────────────────── */
+    .edu-school  { font-size: 13px; font-weight: 700; color: #1E293B; }
+    .edu-degree  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .edu-note    { font-size: 11px; color: var(--subtle); margin-top: 3px; }
+
+    /* ─────────────────── LANGUAGES ─────────────────── */
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 12.5px;
+      color: var(--text-body);
+      margin-bottom: 5px;
+    }
+    .lang-level { font-size: 11px; color: var(--subtle); }
+
+    /* ─────────────────── MEDIA / LINKS ─────────────────── */
+    .media-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+    .media-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .bg-red    { background: #FEE2E2; }
+    .bg-blue   { background: #DBEAFE; }
+    .bg-dark   { background: #F1F5F9; }
+    .media-title { font-size: 11.5px; font-weight: 600; color: #1E293B; }
+    .media-sub   { font-size: 10.5px; color: var(--muted); margin-top: 1px; line-height: 1.35; }
+    .media-link a { font-size: 10.5px; color: var(--teal); text-decoration: none; }
+    .media-link a:hover { text-decoration: underline; }
+
+    /* ─────────────────── SUMMARY ─────────────────── */
+    .summary-text {
+      font-size: 13.5px;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    /* ─────────────────── EXPERIENCE ─────────────────── */
+    .exp { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #F1F5F9; }
+    .exp:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+    .exp-hd {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2px;
+    }
+
+    .exp-title  {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .exp-date {
+      font-size: 11px;
+      color: var(--subtle);
+      font-weight: 500;
+      white-space: nowrap;
+      margin-left: 8px;
+      padding-top: 2px;
+    }
+
+    .exp-org {
+      font-size: 12.5px;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .exp-bullets { list-style: none; padding: 0; }
+
+    .exp-bullets li {
+      font-size: 12.5px;
+      color: var(--text-body);
+      line-height: 1.65;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 10px;
+      top: 3px;
+      font-weight: 700;
+    }
+
+    .exp-bullets li strong { color: var(--text); font-weight: 600; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+    .tag {
+      font-size: 10.5px;
+      background: #F1F5F9;
+      color: #475569;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    /* ─────────────────── PROJECTS ─────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .proj-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 15px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .proj-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 2px 10px rgba(13,148,136,0.08);
+    }
+
+    .proj-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .proj-name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .proj-name a { color: var(--text); text-decoration: none; }
+    .proj-name a:hover { color: var(--teal); }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #16A34A;
+      background: var(--teal-pale);
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .proj-desc {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+
+    .proj-stack { font-size: 10.5px; color: var(--subtle); font-style: italic; }
+
+    /* ─────────────────── PRINT ─────────────────── */
+    @media print {
+      body     { background: white; font-size: 11px; }
+      .topbar  { display: none !important; }
+      .page    { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+
+      .cv-header { padding: 22px 32px 20px; }
+      .cv-header::before { display: none; }
+      .sidebar { padding: 18px 16px; }
+      .main    { padding: 18px 26px; }
+
+      .award, .proj-card, .exp { break-inside: avoid; }
+      .section { margin-bottom: 16px; }
+      .exp     { margin-bottom: 13px; padding-bottom: 13px; }
+      .projects-grid { gap: 7px; }
+
+      @page { margin: 0.55cm; size: A4; }
+    }
+
+    /* ─────────────────── RESPONSIVE ─────────────────── */
+    @media (max-width: 740px) {
+      .cv-body { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+      .cv-header { grid-template-columns: 1fr; gap: 14px; padding: 24px 20px; }
+      .avatar { width: 56px; height: 56px; font-size: 18px; }
+      .header-text h1 { font-size: 22px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .page { margin: 60px 10px 24px; }
+      .topbar { padding: 0 14px; }
+      .topbar-divider, .topbar-label { display: none; }
+      .main { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="/" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Portfolio
+      </a>
+      <div class="topbar-divider"></div>
+      <span class="topbar-label">Munyaradzi Makosa — CV 2026</span>
+    </div>
+    <div class="topbar-right">
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- CV Paper -->
+  <div class="page">
+
+    <!-- ── Header ── -->
+    <div class="cv-header">
+      <div class="avatar">MM</div>
+      <div class="header-text">
+        <h1>Munyaradzi Makosa</h1>
+        <div class="header-role">Product Architect &nbsp;·&nbsp; Software Engineer &nbsp;·&nbsp; Indie Founder</div>
+        <div class="contacts">
+          <a href="mailto:munya@munyamakosa.com">munya@munyamakosa.com</a>
+          <span class="vsep"></span>
+          <a href="https://www.linkedin.com/in/makosa-munya/" target="_blank">linkedin.com/in/makosa-munya</a>
+          <span class="vsep"></span>
+          <a href="https://github.com/farmhutsoftwareteam" target="_blank">github.com/farmhutsoftwareteam</a>
+          <span class="vsep"></span>
+          <a href="https://munyamakosa.com" target="_blank">munyamakosa.com</a>
+          <span class="vsep"></span>
+          <span>Cape Town, South Africa · Remote</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Body ── -->
+    <div class="cv-body">
+
+      <!-- ────────── SIDEBAR ────────── -->
+      <div class="sidebar">
+
+        <!-- Upwork Status -->
+        <div class="upwork-badge">
+          <div class="live-dot"></div>
+          <div>
+            <div class="upwork-text">Top Rated Plus</div>
+            <div class="upwork-sub">Upwork · Highest Tier · Available</div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+          <div class="section-title">Skills</div>
+
+          <div class="skill-group">
+            <div class="skill-label">Mobile</div>
+            <div class="pills">
+              <span class="pill p-blue">React Native</span>
+              <span class="pill p-blue">Expo</span>
+              <span class="pill p-blue">iOS</span>
+              <span class="pill p-blue">Android</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Frontend</div>
+            <div class="pills">
+              <span class="pill p-blue">Next.js</span>
+              <span class="pill p-blue">React</span>
+              <span class="pill p-blue">TypeScript</span>
+              <span class="pill p-blue">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Backend</div>
+            <div class="pills">
+              <span class="pill p-amber">Hono</span>
+              <span class="pill p-amber">Node.js</span>
+              <span class="pill p-amber">Supabase</span>
+              <span class="pill p-amber">PostgreSQL</span>
+              <span class="pill p-amber">Django</span>
+              <span class="pill p-amber">Express</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">AI &amp; Data</div>
+            <div class="pills">
+              <span class="pill p-teal">LLM Integration</span>
+              <span class="pill p-teal">AI Agents</span>
+              <span class="pill p-teal">LangChain</span>
+              <span class="pill p-teal">OpenAI API</span>
+              <span class="pill p-teal">Claude API</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Platforms &amp; Tools</div>
+            <div class="pills">
+              <span class="pill p-purple">Vercel</span>
+              <span class="pill p-purple">Cloudflare</span>
+              <span class="pill p-purple">Figma</span>
+              <span class="pill p-purple">Git / GitHub</span>
+              <span class="pill p-purple">WhatsApp API</span>
+              <span class="pill p-purple">Shopify</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Awards -->
+        <div class="section">
+          <div class="section-title">Awards &amp; Recognition</div>
+
+          <div class="award">
+            <div class="award-icon">💰</div>
+            <div>
+              <div class="award-name">Hult Prize — $100,000 Winner</div>
+              <div class="award-sub">1 of 11 global winners from 33 accelerator finalists · Hult International Business School · 2021</div>
+            </div>
+          </div>
+
+          <div class="award">
+            <div class="award-icon">🏆</div>
+            <div>
+              <div class="award-name">Anzisha Prize Fellow</div>
+              <div class="award-sub">Top 26 Young African Entrepreneurs · African Leadership Academy &amp; Mastercard Foundation · 2021</div>
+            </div>
+          </div>
+
+          <div class="award">
+            <div class="award-icon">🌍</div>
+            <div>
+              <div class="award-name">UN75 Award</div>
+              <div class="award-sub">"The Future We Want" · University World Cup of Startups · United Nations 75th Anniversary</div>
+            </div>
+          </div>
+
+          <div class="award">
+            <div class="award-icon">🌱</div>
+            <div>
+              <div class="award-name">Green Innovation Winner</div>
+              <div class="award-sub">Agricultural sustainability recognition for Farmhut Africa · 2020</div>
+            </div>
+          </div>
+
+          <div class="award">
+            <div class="award-icon">⭐</div>
+            <div>
+              <div class="award-name">Upwork Top Rated Plus</div>
+              <div class="award-sub">Highest freelance tier · Maintained since 2019</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+          <div class="section-title">Education</div>
+          <div class="edu-school">National University of Science &amp; Technology</div>
+          <div class="edu-degree">BSc Chemical Engineering</div>
+          <div class="edu-note">NUST Zimbabwe · Bulawayo</div>
+        </div>
+
+        <!-- Languages -->
+        <div class="section">
+          <div class="section-title">Languages</div>
+          <div class="lang-row">English <span class="lang-level">Fluent</span></div>
+          <div class="lang-row">Shona <span class="lang-level">Native</span></div>
+          <div class="lang-row">Ndebele <span class="lang-level">Conversational</span></div>
+        </div>
+
+        <!-- Media & Press -->
+        <div class="section">
+          <div class="section-title">Media &amp; Press</div>
+
+          <div class="media-item">
+            <div class="media-icon bg-red">🎙</div>
+            <div>
+              <div class="media-title">Forward Thinking Founders</div>
+              <div class="media-sub">Podcast Ep. 640 — Farmhut: Building a Farm-to-Folk Marketplace in Zimbabwe</div>
+              <div class="media-link"><a href="https://podcastaddict.com/forward-thinking-founders/episode/121998498" target="_blank">Listen →</a></div>
+            </div>
+          </div>
+
+          <div class="media-item">
+            <div class="media-icon bg-red">▶</div>
+            <div>
+              <div class="media-title">YouTube Channel</div>
+              <div class="media-sub">@MunyaradziLloydMakosa · Drone &amp; creative side-quests</div>
+              <div class="media-link"><a href="https://www.youtube.com/@MunyaradziLloydMakosa" target="_blank">View channel →</a></div>
+            </div>
+          </div>
+
+          <div class="media-item">
+            <div class="media-icon bg-dark">🐙</div>
+            <div>
+              <div class="media-title">GitHub</div>
+              <div class="media-sub">@farmhutsoftwareteam · 57 repositories</div>
+              <div class="media-link"><a href="https://github.com/farmhutsoftwareteam" target="_blank">github.com/farmhutsoftwareteam →</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ────────── MAIN ────────── -->
+      <div class="main">
+
+        <!-- Summary -->
+        <div class="section">
+          <div class="section-title">Professional Summary</div>
+          <p class="summary-text">
+            Product Architect and software engineer with <strong>6+ years</strong> shipping mobile apps, SaaS platforms, and AI-powered tools used across Africa and globally. Co-founder of <strong>Farmhut Africa</strong> — a $100k Hult Prize-winning agritech startup recognized by the <strong>Anzisha Prize</strong> (Top 26 African Young Entrepreneurs, Mastercard Foundation-backed) and <strong>MIT Solve</strong>. Co-founder of <strong>Studio 82</strong>, a creative technology studio. <strong>Top Rated Plus</strong> on Upwork with thousands of hours delivered. I bridge product thinking with technical execution to ship things fast that reach real users.
+          </p>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+          <div class="section-title">Experience</div>
+
+          <!-- Studio 82 -->
+          <div class="exp">
+            <div class="exp-hd">
+              <div class="exp-title">Co-Founder &amp; Creative Tech Lead</div>
+              <div class="exp-date">2022 — Present</div>
+            </div>
+            <div class="exp-org">Studio 82 (S82 Studio) · Remote</div>
+            <ul class="exp-bullets">
+              <li>Co-founded a creative technology studio delivering <strong>full-stack web and mobile products</strong> for clients at the intersection of design and engineering.</li>
+              <li>Led technical architecture and hands-on development across client engagements spanning web apps, mobile apps, and interactive digital experiences.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">React Native</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">Hono</span>
+            </div>
+          </div>
+
+          <!-- Farmhut -->
+          <div class="exp">
+            <div class="exp-hd">
+              <div class="exp-title">Co-Founder &amp; Operations / Product Lead</div>
+              <div class="exp-date">2019 — Present</div>
+            </div>
+            <div class="exp-org">Farmhut Africa · Remote (Zimbabwe)</div>
+            <ul class="exp-bullets">
+              <li>Co-founded an <strong>AI-powered agricultural marketplace</strong> connecting rural Zimbabwean farmers directly to buyers, reducing supply chain friction and post-harvest losses.</li>
+              <li>Won <strong>$100,000 USD from the Hult Prize Foundation</strong> (2021) — selected as 1 of 11 global winners from 33 accelerator participants.</li>
+              <li>Selected as <strong>Anzisha Prize Fellow (Top 26)</strong> — Africa's most prestigious young entrepreneur award, backed by African Leadership Academy and Mastercard Foundation.</li>
+              <li>Recognized by <strong>MIT Solve</strong> as a high-impact social tech innovation; won the <strong>UN75 Award</strong> "The Future We Want" at the University World Cup of Startups.</li>
+              <li>Built a <strong>WhatsApp-based chatbot</strong> enabling farmers with low connectivity to access the marketplace; secured a formal partnership with the <strong>Zimbabwe Farmers Union</strong>.</li>
+              <li>Revenue streams: farmer subscriptions, produce vendor sales, and advertising on the agricultural chatbot.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Django</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">AI/ML</span>
+              <span class="tag">WhatsApp API</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+
+          <!-- Kwingy -->
+          <div class="exp">
+            <div class="exp-hd">
+              <div class="exp-title">Co-Founder &amp; Technical Lead</div>
+              <div class="exp-date">2022 — Present</div>
+            </div>
+            <div class="exp-org">Kwingy · UK-Registered (Remote)</div>
+            <ul class="exp-bullets">
+              <li>Co-founded a UK-registered technology services company focused on <strong>digital transformation</strong> for businesses in Africa and beyond.</li>
+              <li>Led technical strategy and product delivery for client engagements across web and mobile platforms.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">React Native</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">Hono</span>
+              <span class="tag">TypeScript</span>
+            </div>
+          </div>
+
+          <!-- Upwork -->
+          <div class="exp">
+            <div class="exp-hd">
+              <div class="exp-title">Freelance Software Engineer — Top Rated Plus</div>
+              <div class="exp-date">2019 — Present</div>
+            </div>
+            <div class="exp-org">Upwork · Remote (Global Clients)</div>
+            <ul class="exp-bullets">
+              <li>Achieved and maintained <strong>Top Rated Plus</strong> status — Upwork's highest tier — across thousands of hours of successfully delivered client work.</li>
+              <li>Built production-grade mobile apps, SaaS web applications, backend APIs, and AI integrations for clients across the <strong>US, UK, Europe, and Africa</strong>.</li>
+              <li>Domain expertise spanning fintech, healthtech, e-commerce, consumer mobile, and workflow automation.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">React Native</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">Hono</span>
+              <span class="tag">AI / LLMs</span>
+            </div>
+          </div>
+
+          <!-- Byrna POS -->
+          <div class="exp">
+            <div class="exp-hd">
+              <div class="exp-title">Lead Developer — Point of Sale Platform</div>
+              <div class="exp-date">2020 — 2022</div>
+            </div>
+            <div class="exp-org">Byrna POS · Zimbabwe</div>
+            <ul class="exp-bullets">
+              <li>Led full development of a <strong>custom POS system</strong> from architecture to production deployment.</li>
+              <li>Engineered the core transaction engine, inventory management module, and real-time reporting dashboards.</li>
+              <li>Managed technical delivery and third-party integrations for retail client rollouts across Zimbabwe.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">REST APIs</span>
+            </div>
+          </div>
+
+          <!-- Raysun Capital -->
+          <div class="exp">
+            <div class="exp-hd">
+              <div class="exp-title">Lead Developer — Loan Management System</div>
+              <div class="exp-date">2019 — 2020</div>
+            </div>
+            <div class="exp-org">Raysun Capital · Zimbabwe</div>
+            <ul class="exp-bullets">
+              <li>Designed and built an <strong>internal loan approval and portfolio management system</strong> for the capital firm.</li>
+              <li>Delivered automated credit workflows, client risk assessment modules, and executive reporting dashboards.</li>
+              <li>Reduced manual processing overhead and improved loan decision turnaround time for the lending team.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">REST APIs</span>
+            </div>
+          </div>
+
+          <!-- Zimbabwe Yellow Pages -->
+          <div class="exp">
+            <div class="exp-hd">
+              <div class="exp-title">Developer — Digital Transformation</div>
+              <div class="exp-date">2018 — 2019</div>
+            </div>
+            <div class="exp-org">Zimbabwe Yellow Pages · Zimbabwe</div>
+            <ul class="exp-bullets">
+              <li>Contributed to migrating Zimbabwe's national business directory from <strong>print to a digital platform</strong>, modernizing how businesses and consumers discover services.</li>
+              <li>Supported architecture and front-end implementation of the digital directory and business listing system.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Web Development</span>
+              <span class="tag">Digital Platforms</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Selected Projects -->
+        <div class="section">
+          <div class="section-title">Selected Projects</div>
+          <div class="projects-grid">
+
+            <div class="proj-card">
+              <div class="proj-top">
+                <div class="proj-name"><a href="https://menyu.pro" target="_blank">Menyu.pro</a></div>
+                <span class="badge-live"><span class="live-dot" style="width:5px;height:5px;animation:none;box-shadow:none;"></span>Live</span>
+              </div>
+              <div class="proj-desc">SaaS menu studio for restaurants — create, style, and publish QR menus, PDFs &amp; print formats from one workspace. "Change once, update everywhere."</div>
+              <div class="proj-stack">Next.js · Supabase · Hono · PostgreSQL</div>
+            </div>
+
+            <div class="proj-card">
+              <div class="proj-top">
+                <div class="proj-name"><a href="https://freyt365.com" target="_blank">Freyt365</a></div>
+                <span class="badge-live"><span class="live-dot" style="width:5px;height:5px;animation:none;box-shadow:none;"></span>Live</span>
+              </div>
+              <div class="proj-desc">Finance &amp; fuel management platform for transporters across Southern Africa. Fleet financial tools and fuel procurement in one product.</div>
+              <div class="proj-stack">Next.js · React · Fintech APIs</div>
+            </div>
+
+            <div class="proj-card">
+              <div class="proj-top">
+                <div class="proj-name">Hubflo AI</div>
+              </div>
+              <div class="proj-desc">AI workflow automation — connects LLM assistants to Slack &amp; Gmail to eliminate manual daily ops. Agentic automation for modern teams.</div>
+              <div class="proj-stack">Next.js · LangChain · Supabase</div>
+            </div>
+
+            <div class="proj-card">
+              <div class="proj-top">
+                <div class="proj-name"><a href="https://www.crunchbase.com/organization/farmhut" target="_blank">Farmhut Africa</a></div>
+                <span class="badge-live"><span class="live-dot" style="width:5px;height:5px;animation:none;box-shadow:none;"></span>Live</span>
+              </div>
+              <div class="proj-desc">AI marketplace for rural farmers. $100k Hult Prize winner · Anzisha Prize Top 26 · MIT Solve · Zimbabwe Farmers Union partner.</div>
+              <div class="proj-stack">React · Django · AI/ML · PostgreSQL</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('beforeprint', () => {
+      document.title = 'Munyaradzi_Makosa_CV_2026';
+    });
+    window.addEventListener('afterprint', () => {
+      document.title = 'Munyaradzi Makosa — Product Architect & Software Engineer';
+    });
+  </script>
+
+</body>
+</html>

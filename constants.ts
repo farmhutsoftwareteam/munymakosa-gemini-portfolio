@@ -31,7 +31,7 @@ export const PROJECTS: Project[] = [
   {
     id: "farmhut",
     title: "Farmhut Africa",
-    description: "AI-powered marketplace connecting rural farmers directly to markets. Recognized by Anzisha Prize and MIT Solve.",
+    description: "AI-powered marketplace connecting rural farmers directly to markets. $100k Hult Prize winner. Recognized by Anzisha Prize and MIT Solve.",
     techStack: ["React", "Django", "AI", "Postgres"],
     bossFight: "Market access for rural farmers",
     type: "web",
@@ -95,8 +95,8 @@ export const ACHIEVEMENTS: Achievement[] = [
   {
     id: "founder",
     title: "Founded Farmhut",
-    description: "Launched and scaled an AI marketplace for farmers. (Green Innovation Winner)",
-    year: "2020",
+    description: "Launched and scaled an AI marketplace for farmers. $100k Hult Prize Winner. Green Innovation Winner.",
+    year: "2019",
     xp: 800
   },
   {

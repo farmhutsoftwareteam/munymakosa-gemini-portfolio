@@ -35,6 +35,11 @@ export const Contact: React.FC = () => {
                <Mail className="mr-2 w-4 h-4" /> START PROJECT
             </RetroButton>
           </a>
+          <a href="/cv.html" className="w-full md:w-auto">
+            <RetroButton variant="secondary" className="w-full md:w-auto flex justify-center">
+              📄 VIEW CV
+            </RetroButton>
+          </a>
           <span className="font-pixel text-xs text-gray-500">OR</span>
            {/* Social Icons */}
            <div className="flex gap-4">
