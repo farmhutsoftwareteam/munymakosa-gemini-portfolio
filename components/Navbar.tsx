@@ -1,33 +1,42 @@
-import React from 'react';
-import { Terminal } from 'lucide-react';
+import React, { useState } from 'react';
+import { blip, coin, isSoundOn, setSound } from '../sound';
+
+const LINKS = [
+  { href: '#work', label: 'Work' },
+  { href: '#about', label: 'About' },
+  { href: '#scores', label: 'High scores' },
+  { href: '#aerial', label: 'Aerial' },
+  { href: '/cv.html', label: 'CV' },
+];
 
 export const Navbar: React.FC = () => {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4 pointer-events-none">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="pointer-events-auto bg-retro-black/80 backdrop-blur px-4 py-2 border border-retro-green/50 flex items-center gap-2">
-          <Terminal className="text-retro-green w-4 h-4" />
-          <span className="font-pixel text-xs text-white">MUNYA.DEV</span>
-        </div>
+  const [sound, setSoundState] = useState(isSoundOn);
 
-        <div className="hidden md:flex gap-4 pointer-events-auto items-center">
-           {['About', 'Projects', 'Contact'].map((item) => (
-             <button
-               key={item}
-               onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
-               className="font-pixel text-[10px] text-retro-green hover:text-white bg-retro-black/80 px-3 py-2 border border-transparent hover:border-retro-green transition-all"
-             >
-               {item.toUpperCase()}
-             </button>
-           ))}
-           <a
-             href="/cv.html"
-             className="font-pixel text-[10px] text-retro-black bg-retro-green hover:bg-white px-3 py-2 border border-retro-green transition-all"
-           >
-             📄 CV
-           </a>
-        </div>
+  const toggleSound = () => {
+    const next = !sound;
+    setSound(next);
+    setSoundState(next);
+    if (next) blip(880, 90);
+  };
+
+  return (
+    <header className="wrap bar">
+      <a className="bar__mark" href="#top">MUNYA MAKOSA</a>
+      <nav aria-label="Main">
+        <ul className="bar__links">
+          {LINKS.map(link => (
+            <li key={link.href}>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div className="bar__end">
+        <button className="sound" type="button" aria-pressed={sound} onClick={toggleSound}>
+          {sound ? 'Sound on' : 'Sound off'}
+        </button>
+        <a className="btn btn--coin" href="#contact" onClick={coin}>Hire me</a>
       </div>
-    </nav>
+    </header>
   );
 };

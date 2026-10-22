@@ -1,169 +1,137 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { INTRO_TEXT } from '../constants';
-import { RetroButton } from './RetroUI';
-import { ChevronRight, Play, Terminal } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { CHANNELS } from '../constants';
+import { isGoldenHour, unlock } from '../secrets';
+import { blip, coin } from '../sound';
+import { Channel } from '../types';
+import { FLAG, Stripe } from './Pixel';
 
-const bootSequenceVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.8,
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.3 },
-  },
+const HOLD_MS = 7000;
+
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Secret channel 00: only airs 20:04–20:10 Cape Town time, the minutes the Sonder frames were shot.
+const GOLDEN: Channel = {
+  id: 'golden',
+  name: 'Golden hour',
+  caption: 'You’re here at the exact minutes I had the drone up over Cape Town. This channel only airs 20:04 to 20:10.',
+  image: '/media/sonder/s02.jpg',
+  alt: "Lion's Head against a violet dusk at 20:04, the city bowl lit beneath it.",
+  link: 'https://munyamakosa.pixieset.com/theconceptofsonder/',
 };
 
-const lineVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.3 },
-  },
-};
+function useGoldenHour() {
+  const forced = import.meta.env.DEV && new URLSearchParams(window.location.search).has('goldenhour');
+  const [golden, setGolden] = useState(() => forced || isGoldenHour());
+  useEffect(() => {
+    if (forced) return;
+    const id = window.setInterval(() => setGolden(isGoldenHour()), 15000);
+    return () => window.clearInterval(id);
+  }, [forced]);
+  useEffect(() => {
+    if (golden) unlock('golden');
+  }, [golden]);
+  return golden;
+}
 
-const mainContentVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
+// The CRT set: each channel is one of Munya's lives. It flicks on by itself and the visitor can change it.
+const Crt: React.FC = () => {
+  const golden = useGoldenHour();
+  const channels = golden ? [GOLDEN, ...CHANNELS] : CHANNELS;
+  const [channel, setChannel] = useState(0);
+  const [turns, setTurns] = useState(0); // bumps on every manual change to restart the hold
+  const paused = useRef(false);
+  const current = channels[channel] ?? channels[0];
+  const number = (i: number) => String(golden ? i : i + 1).padStart(2, '0');
 
-export const Hero: React.FC = () => {
-  const [isBooting, setIsBooting] = useState(true);
+  // Golden hour starting or ending retunes the set to its first channel.
+  useEffect(() => setChannel(0), [golden]);
 
-  const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  useEffect(() => {
+    if (prefersReducedMotion() || golden) return; // the golden channel holds while it airs
+    const id = window.setInterval(() => {
+      if (document.hidden || paused.current) return;
+      setChannel(c => (c + 1) % channels.length);
+    }, HOLD_MS);
+    return () => window.clearInterval(id);
+  }, [turns, golden, channels.length]);
 
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleBootComplete = () => {
-    setTimeout(() => setIsBooting(false), 500);
+  const turn = (step: number) => {
+    if (step === 0) return;
+    setChannel(c => (c + step + channels.length) % channels.length);
+    setTurns(t => t + 1);
+    blip(step > 0 ? 740 : 520, 60);
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center relative px-6 pt-20 overflow-hidden">
-      {/* Background Grid */}
-      <div
-        className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage: 'linear-gradient(#1a4d10 1px, transparent 1px), linear-gradient(90deg, #1a4d10 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      />
-
-      <div className="container mx-auto z-10 grid lg:grid-cols-2 gap-12 items-center">
-        {/* Left: Terminal Text / Main Content */}
-        <div className="font-terminal space-y-6">
-          <AnimatePresence mode="wait">
-            {isBooting ? (
-              <motion.div
-                key="boot"
-                variants={bootSequenceVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                onAnimationComplete={handleBootComplete}
-                className="h-32 md:h-24 text-retro-green/70 text-sm md:text-base leading-relaxed"
-              >
-                {INTRO_TEXT.map((line, idx) => (
-                  <motion.div key={idx} variants={lineVariants}>
-                    <span className="text-retro-purple mr-2">{'>'}</span>
-                    {line}
-                    {idx === INTRO_TEXT.length - 1 && (
-                      <span className="inline-block w-2 h-4 bg-retro-green ml-1 align-middle animate-pulse" />
-                    )}
-                  </motion.div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="main"
-                variants={mainContentVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                <h1 className="font-pixel text-3xl md:text-5xl lg:text-6xl leading-tight text-white mb-4">
-                  MUNYARADZI <br />
-                  <span className="text-retro-green">MAKOSA</span>
-                </h1>
-
-                <h2 className="font-terminal text-xl md:text-2xl text-retro-cyan mb-6 border-b border-retro-green/30 pb-4 inline-block">
-                  Product Architect · Indie Founder · AI Builder
-                </h2>
-
-                <p className="text-gray-400 text-lg max-w-lg mb-8">
-                  I build mobile apps, SaaS products & AI tools that ship fast and actually get used.
-                  From <span className="text-retro-green">Rural Zim</span> to the <span className="text-retro-purple">Global Stage</span>.
-                </p>
-
-                <div className="flex flex-wrap gap-4">
-                  <RetroButton onClick={scrollToProjects}>
-                    <Play className="w-4 h-4" /> Play Showreel
-                  </RetroButton>
-                  <RetroButton variant="secondary" onClick={scrollToContact}>
-                    <Terminal className="w-4 h-4" /> Hire / Contact
-                  </RetroButton>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+    <div
+      className="crt"
+      onMouseEnter={() => (paused.current = true)}
+      onMouseLeave={() => (paused.current = false)}
+      onFocus={() => (paused.current = true)}
+      onBlur={() => (paused.current = false)}
+    >
+      <div className="crt__screen" role="group" aria-roledescription="TV" aria-label="Channels: Munya's work, flights and mixes">
+        {channels.map((c, i) => (
+          <img
+            key={c.id}
+            src={c.image}
+            alt={i === channel ? c.alt : ''}
+            aria-hidden={i !== channel}
+            className={i === channel ? 'is-on' : undefined}
+            style={{ objectPosition: c.position ?? 'center' }}
+            width={1200}
+            height={900}
+            fetchPriority={i === 0 ? 'high' : 'low'}
+          />
+        ))}
+        <p key={`${golden}-${channel}`} className={`crt__osd${turns || golden ? ' flash' : ''}${current.id === 'golden' ? ' crt__osd--gold' : ''}`} aria-hidden="true">
+          CH {number(channel)}
+        </p>
+      </div>
+      <div className="crt__controls">
+        <div className="crt__now" aria-live="polite">
+          <p className="crt__name">{current.name}</p>
+          <p className="crt__caption">{current.caption}</p>
         </div>
-
-        {/* Right: Avatar / Graphic */}
-        <div className="relative hidden lg:flex justify-center items-center">
-          <AnimatePresence>
-            {!isBooting && (
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: 'spring', bounce: 0.5 }}
-                className="relative w-80 h-80"
-              >
-                <div className="w-64 h-64 mx-auto bg-retro-green/20 border-4 border-retro-green relative overflow-hidden shadow-[8px_8px_0px_0px_#1a4d10]">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-pixel text-6xl text-retro-green">M</span>
-                  </div>
-                </div>
-
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 4 }}
-                  className="absolute -right-4 top-0 bg-retro-black border border-retro-green p-2 shadow-[4px_4px_0px_0px_#39ff14]"
-                >
-                  <div className="font-pixel text-[10px] text-retro-green">STATUS: ONLINE</div>
-                  <div className="font-pixel text-[10px] text-retro-purple">LVL: 99</div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        <div className="crt__buttons">
+          <button className="knob" type="button" aria-label="Previous channel" onClick={() => turn(-1)}>CH-</button>
+          <button className="knob" type="button" aria-label="Next channel" onClick={() => turn(1)}>CH+</button>
+          {current.link && (
+            <a className="knob knob--go" href={current.link} target="_blank" rel="noreferrer">
+              Visit<span className="sr-only"> {current.name}</span>
+            </a>
+          )}
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <AnimatePresence>
-        {!isBooting && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-retro-green flex flex-col items-center gap-2"
-          >
-            <span className="font-pixel text-[10px]">INSERT COIN TO SCROLL</span>
-            <ChevronRight className="rotate-90 w-6 h-6 animate-bounce" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
+    </div>
   );
 };
+
+export const Hero: React.FC = () => (
+  <section className="hero" id="top" aria-label="Introduction">
+    <div className="marquee">
+      <Stripe colors={[FLAG.gold, FLAG.red, FLAG.gold, FLAG.black]} />
+      <div className="marquee__body">
+        <img
+          className="marquee__avatar"
+          src="/avatar.png"
+          alt="Pixel-art portrait of Munya in a green cap"
+          width={132}
+          height={132}
+        />
+        <h1>MUNYARADZI<br />MAKOSA</h1>
+        <p className="marquee__lede">
+          Product architect from Zimbabwe, based in Cape Town. I build AI products, and the agent tools I ship them with.
+        </p>
+        <a className="btn btn--dark marquee__cta" href="#contact" onClick={coin}>Start a project</a>
+      </div>
+      <ul className="marquee__links">
+        <li><a className="textlink" href="#work">See the work</a></li>
+        <li><a className="textlink" href="/cv.html">Read the CV</a></li>
+        <li><a className="textlink" href="https://dj.munyamakosa.com" target="_blank" rel="noreferrer">Hear the mixes</a></li>
+      </ul>
+    </div>
+    <Crt />
+  </section>
+);

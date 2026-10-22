@@ -1,68 +1,68 @@
-import React from 'react';
-import { RetroButton } from './RetroUI';
-import { SOCIALS } from '../constants';
-import { Github, Linkedin, Twitter, Briefcase, Mail, Coffee, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { EMAIL } from '../constants';
+import { coin } from '../sound';
 
+// The coupon: fill it in and it opens your email app with everything written out. There is no backend.
 export const Contact: React.FC = () => {
-  const getIcon = (name: string) => {
-    switch(name) {
-      case 'GitHub': return <Github size={20} />;
-      case 'LinkedIn': return <Linkedin size={20} />;
-      case 'Twitter':
-      case 'X': return <Twitter size={20} />;
-      case 'Upwork': return <Briefcase size={20} />;
-      default: return <ExternalLink size={20} />;
-    }
+  const [sent, setSent] = useState(false);
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const name = String(data.get('name') || '').trim();
+    const from = String(data.get('email') || '').trim();
+    const project = String(data.get('project') || '').trim();
+    const budget = String(data.get('budget') || '').trim();
+
+    const subject = `New project${name ? ` from ${name}` : ''}`;
+    const body = [
+      'Hi Munya,',
+      '',
+      project || 'I have a project I’d like to talk about.',
+      '',
+      budget && `Budget / timeline: ${budget}`,
+      from && `Reply to: ${from}`,
+      name && `— ${name}`,
+    ].filter(line => line !== '').join('\n');
+
+    coin();
+    setSent(true);
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-gradient-to-t from-retro-green/10 to-retro-black border-t-4 border-retro-green">
-      <div className="container mx-auto text-center max-w-2xl">
-        <div className="animate-bounce mb-6 inline-block text-retro-green">
-          <Coffee size={40} />
+    <section className="section wrap" id="contact" aria-labelledby="contact-title">
+      <div className="coupon" data-reveal>
+        <div className="coupon__pitch">
+          <h2 id="contact-title">INSERT COIN TO START</h2>
+          <p>
+            Tell me what you’re building. This opens your email app with everything filled in, so it goes
+            straight to me.
+          </p>
         </div>
-        
-        <h2 className="font-pixel text-3xl md:text-4xl text-white mb-6">START CO-OP MODE?</h2>
-        
-        <p className="font-terminal text-xl text-gray-300 mb-10">
-          Need a React Native app, SaaS product, or AI-powered tool built?
-          I work with founders and teams who want to ship fast and scale.
-        </p>
-
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">
-          <a href="mailto:munya@munyamakosa.com" className="w-full md:w-auto">
-            <RetroButton className="w-full md:w-auto flex justify-center">
-               <Mail className="mr-2 w-4 h-4" /> START PROJECT
-            </RetroButton>
-          </a>
-          <a href="/cv.html" className="w-full md:w-auto">
-            <RetroButton variant="secondary" className="w-full md:w-auto flex justify-center">
-              📄 VIEW CV
-            </RetroButton>
-          </a>
-          <span className="font-pixel text-xs text-gray-500">OR</span>
-           {/* Social Icons */}
-           <div className="flex gap-4">
-            {SOCIALS.map(social => (
-              <a 
-                key={social.platform} 
-                href={social.url} 
-                target="_blank" 
-                rel="noreferrer"
-                className="p-3 bg-retro-gray border border-retro-green/50 text-retro-green hover:bg-retro-green hover:text-retro-black transition-colors"
-                aria-label={social.platform}
-              >
-                {getIcon(social.platform)}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="font-pixel text-[10px] text-gray-600 mt-20">
-          © {new Date().getFullYear()} MUNYARADZI MAKOSA. ALL RIGHTS RESERVED.
-          <br />
-          MADE WITH REACT + TAILWIND + PIXELS
-        </div>
+        <form className="coupon__form" onSubmit={onSubmit}>
+          <label className="sr-only" htmlFor="c-name">Your name</label>
+          <input id="c-name" name="name" autoComplete="name" placeholder="Your name" required />
+          <label className="sr-only" htmlFor="c-email">Your email</label>
+          <input id="c-email" name="email" type="email" autoComplete="email" placeholder="Your email" required />
+          <label className="sr-only" htmlFor="c-project">What are you building?</label>
+          <textarea id="c-project" name="project" placeholder="What are you building?" required />
+          <label className="sr-only" htmlFor="c-budget">Budget or timeline</label>
+          <input id="c-budget" name="budget" placeholder="Budget or timeline (optional)" />
+          <button className="btn btn--dark" type="submit">Send to Munya</button>
+          <p className="coupon__sent" role="status">
+            {sent ? `Your email app should open now. If it didn’t, write to ${EMAIL}.` : ''}
+          </p>
+        </form>
+      </div>
+      <div className="contact__alt">
+        <a className="textlink" href="https://www.upwork.com/freelancers/~018e86cb6f5afe5cdf?mp_source=share" target="_blank" rel="noreferrer">
+          Hire me on Upwork
+        </a>
+        <a className="textlink" href="https://www.linkedin.com/in/makosa-munya/" target="_blank" rel="noreferrer">
+          Connect on LinkedIn
+        </a>
+        <a className="textlink" href="/cv.html">Read the CV</a>
       </div>
     </section>
   );

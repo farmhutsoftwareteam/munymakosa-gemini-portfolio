@@ -1,59 +1,111 @@
-import React, { useState, useEffect } from 'react';
-import { RetroOverlay } from './components/RetroOverlay';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Projects } from './components/Projects';
-import { Timeline } from './components/Timeline';
-import { TechStack } from './components/TechStack';
-import { Contact } from './components/Contact';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { Shelf } from './components/Shelf';
+import { Letter } from './components/Letter';
+import { HighScores } from './components/HighScores';
+import { Aerial } from './components/Aerial';
+import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
+import { AchievementToast, DialogBox } from './components/Secrets';
+import { coin } from './sound';
+import { EMAIL } from './constants';
+import { SECRETS, foundSecrets, say, unlock } from './secrets';
+
+const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+const MHORO = 'mhoro';
+
+const isTyping = (el: EventTarget | null) =>
+  el instanceof HTMLElement && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
+
+// The dev room: a note in the console for anyone who opens it, and a secret to claim.
+function useDevRoom() {
+  useEffect(() => {
+    const w = window as typeof window & { munya?: Record<string, () => string> };
+    if (w.munya) return;
+    w.munya = {
+      unlock: () => (unlock('devroom') ? 'Achievement unlocked: Dev room.' : 'Already yours. Nice.'),
+      hire: () => { window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent('Found the dev room')}`; return 'Opening your email…'; },
+      secrets: () => {
+        const found = foundSecrets();
+        return SECRETS.map(s => `${found.includes(s.id) ? '■' : '□'} ${found.includes(s.id) ? s.name : '???'}`).join('\n');
+      },
+    };
+    const banner = 'font: bold 15px ui-monospace, monospace; padding: 6px 10px; color: #050505;';
+    console.log('%c MUNYA MAKOSA %c DEV ROOM ', `${banner} background: #39ff14;`, `${banner} background: #ffd200;`);
+    console.log(
+      '%cYou found the dev room. If you read consoles for fun, we should probably work together.\n\n' +
+        '  munya.unlock()   claim this secret\n' +
+        '  munya.hire()     email me\n' +
+        '  munya.secrets()  see what you’ve found',
+      'color: #39ff14; background: #050505; font: 13px ui-monospace, monospace; line-height: 1.7; padding: 8px 10px;',
+    );
+  }, []);
+}
+
+// Reveal each [data-reveal] block once as it scrolls into view.
+function useReveal() {
+  useEffect(() => {
+    document.documentElement.classList.add('js');
+    const blocks = document.querySelectorAll<HTMLElement>('[data-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      blocks.forEach(b => b.classList.add('is-in'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }),
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+    );
+    blocks.forEach(b => io.observe(b));
+    return () => io.disconnect();
+  }, []);
+}
 
 const App: React.FC = () => {
-  // Easter Egg: Konami Code
-  const [hardcoreMode, setHardcoreMode] = useState(false);
-  const [konami, setKonami] = useState<string[]>([]);
-  const code = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  // Easter egg: the Konami code flips the cabinet into hardcore mode.
+  const [hardcore, setHardcore] = useState(false);
+  useReveal();
+  useDevRoom();
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      setKonami(prev => {
-        const newSeq = [...prev, e.key];
-        if (newSeq.length > code.length) newSeq.shift();
-        
-        if (JSON.stringify(newSeq) === JSON.stringify(code)) {
-          setHardcoreMode(p => !p);
-          return [];
-        }
-        return newSeq;
-      });
+    let seq: string[] = [];
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (isTyping(e.target)) return;
+      seq = [...seq, e.key].slice(-KONAMI.length);
+      if (seq.join() === KONAMI.join()) {
+        setHardcore(h => !h);
+        if (!unlock('konami')) coin();
+        seq = [];
+      }
+      if (seq.slice(-MHORO.length).join('').toLowerCase() === MHORO) {
+        unlock('mhoro');
+        say('Mhoro! Makadii? That’s “hello, how are you?” in Shona. I’m from Zimbabwe, so you just made my day.');
+        seq = [];
+      }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
   return (
-    <main className={`min-h-screen bg-retro-black text-retro-green selection:bg-retro-green selection:text-retro-black ${hardcoreMode ? 'invert hue-rotate-180' : ''}`}>
-      <RetroOverlay />
+    <div className={hardcore ? 'hardcore' : undefined}>
       <Navbar />
-      
-      <Hero />
-      <About />
-      <Projects />
-      <Timeline />
-      <TechStack />
-      
-      {/* Side Quest / Content Creator Teaser */}
-      <section className="py-10 bg-retro-green/5 border-y border-retro-green/20">
-        <div className="container mx-auto text-center px-6">
-           <div className="font-pixel text-xs text-retro-purple mb-2">SIDE QUESTS</div>
-           <p className="font-terminal text-xl text-white max-w-2xl mx-auto leading-relaxed">
-             "When I'm not building apps, I'm capturing the world with <span className="text-retro-green">Drone Photography</span>, mixing <a href="https://dj.munyamakosa.com" target="_blank" rel="noreferrer" className="text-retro-green hover:text-retro-cyan underline underline-offset-4 decoration-retro-green/50 hover:decoration-retro-cyan transition-colors">Afro-House</a> sets, or clutching in COD."
-           </p>
-        </div>
-      </section>
-
-      <Contact />
-    </main>
+      <main>
+        <Hero />
+        <Shelf />
+        <Letter />
+        <HighScores />
+        <Aerial />
+        <Contact />
+      </main>
+      <Footer />
+      <AchievementToast />
+      <DialogBox />
+    </div>
   );
 };
 

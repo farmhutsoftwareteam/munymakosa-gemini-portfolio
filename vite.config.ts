@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => {
           input: {
             main: path.resolve(__dirname, 'index.html'),
             cv: path.resolve(__dirname, 'cv.html'),
+            notfound: path.resolve(__dirname, '404.html'),
           }
         }
       }
