@@ -43,25 +43,34 @@ function useDevRoom() {
   }, []);
 }
 
-// Reveal each [data-reveal] block once as it scrolls into view.
+// Reveal each [data-reveal] block once its top reaches the lower tenth of the screen.
+// Checked on every scroll frame rather than with an IntersectionObserver, so a fast flick or a
+// jump to an anchor also reveals everything scrolled past, instead of leaving it invisible.
 function useReveal() {
   useEffect(() => {
     document.documentElement.classList.add('js');
-    const blocks = document.querySelectorAll<HTMLElement>('[data-reveal]');
-    if (!('IntersectionObserver' in window)) {
-      blocks.forEach(b => b.classList.add('is-in'));
-      return;
-    }
-    const io = new IntersectionObserver(
-      entries => entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);
-      }),
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
-    );
-    blocks.forEach(b => io.observe(b));
-    return () => io.disconnect();
+    let pending = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    let frame = 0;
+    const check = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.9;
+      pending = pending.filter(block => {
+        if (block.getBoundingClientRect().top > line) return true;
+        block.classList.add('is-in');
+        return false;
+      });
+      if (!pending.length) stop();
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(check); };
+    const stop = () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      cancelAnimationFrame(frame);
+    };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    check();
+    return stop;
   }, []);
 }
 

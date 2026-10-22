@@ -545,3 +545,19 @@ button { cursor: pointer; background: none; border: 0; }
   .over__hint { animation: blink 1s steps(2) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 }
+
+/* thumb-sized hit areas for text links, without changing how they look */
+.bar__mark, .marquee__links a, .aerial__more a, .contact__alt a, .back__addr a, .stub a {
+  display: inline-block; padding-block: 10px;
+}
+.back__addr { gap: 2px; }
+.marquee__links { gap: 0 28px; }
+.aerial__more { gap: 0 40px; }
+.contact__alt { gap: 0 36px; }
+
+/* small phones: keep the wordmark and the action on one line each */
+.btn, .bar__mark { white-space: nowrap; }
+@media (max-width: 380px) {
+  .bar { gap: 12px; }
+  .bar .btn { padding: 0 14px; }
+}
