@@ -561,3 +561,44 @@ button { cursor: pointer; background: none; border: 0; }
   .bar { gap: 12px; }
   .bar .btn { padding: 0 14px; }
 }
+
+/* ---------- phones: a shorter page ---------- */
+
+.board__tabs { display: none; }
+.aerial__swipe { display: none; margin-top: 14px; color: var(--muted); font-size: var(--s-small); }
+
+@media (max-width: 760px) {
+  /* the score sheet's four groups become tabs */
+  .board__tabs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 28px;
+  }
+  .board__tabs button {
+    min-height: 48px; background: var(--panel); color: var(--ink);
+    font-size: var(--s-text); transition: background-color 160ms, color 160ms;
+  }
+  .board__tabs button[aria-pressed="true"] { background: var(--phosphor); color: var(--ink-dark); }
+  .board__groups { margin-top: 28px; }
+  .board__group:not(.is-active) { display: none; }
+  .board__group h3 { display: none; }   /* the pressed tab already names the group */
+  .board__foot { margin-top: 36px; }
+}
+
+@media (max-width: 900px) {
+  /* tighter rhythm between sections */
+  :root { --section: 80px; }
+  #aerial { padding-top: 96px; }
+}
+
+@media (max-width: 760px) {
+  /* the aerial frames become one swipeable row */
+  .tiles {
+    display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--margin) * -1); padding-inline: var(--margin);
+    scroll-padding-inline: var(--margin); scrollbar-width: none;
+  }
+  .tiles::-webkit-scrollbar { display: none; }
+  .tile { flex: 0 0 78%; scroll-snap-align: start; }
+  .tile__img { aspect-ratio: 4 / 3; }
+  .tile__strip .hide-sm { display: inline; }
+  .aerial__swipe { display: block; }
+}

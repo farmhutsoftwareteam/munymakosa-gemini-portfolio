@@ -29,6 +29,7 @@ export const Aerial: React.FC = () => (
         </li>
       ))}
     </ul>
+    <p className="aerial__swipe" aria-hidden="true">Swipe for all eight frames</p>
     <div className="aerial__more" data-reveal>
       <a className="textlink" href="https://munyamakosa.pixieset.com/theconceptofsonder/" target="_blank" rel="noreferrer">
         See all thirteen frames on Pixieset
