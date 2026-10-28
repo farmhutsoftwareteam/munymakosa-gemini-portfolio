@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Munyaradzi_Makosa_CV_Harvard_2026</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: A4;
+      margin: 10mm 13mm 10mm 13mm;
+    }
+
+    html, body {
+      background: #FFFFFF;
+      color: #111111;
+      font-family: 'EB Garamond', 'Liberation Serif', 'Georgia', 'Times New Roman', Times, serif;
+      font-size: 9.65pt;
+      line-height: 1.24;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: #111111;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 7px;
+      padding-bottom: 5px;
+      border-bottom: 1.25px solid #000000;
+    }
+
+    .header h1 {
+      font-size: 18.5pt;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: #000000;
+      line-height: 1.1;
+      margin-bottom: 2.5px;
+    }
+
+    .header-subtitle {
+      font-size: 10.1pt;
+      font-weight: 600;
+      letter-spacing: 0.25px;
+      color: #1A1A1A;
+      margin-bottom: 2.5px;
+    }
+
+    .contact-line {
+      font-size: 9.6pt;
+      color: #111111;
+      line-height: 1.22;
+    }
+
+    .contact-line span.sep {
+      margin: 0 4.5px;
+      color: #333333;
+    }
+
+    /* ── Executive Profile ── */
+    .summary {
+      font-size: 9.55pt;
+      line-height: 1.25;
+      color: #111111;
+      text-align: justify;
+      margin-bottom: 6.5px;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 6.5px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 10.3pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      color: #000000;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 1px;
+      margin-bottom: 5px;
+    }
+
+    /* ── Experience Entries ── */
+    .entry {
+      margin-bottom: 5px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .entry-org {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .entry-org-note {
+      font-weight: 400;
+      font-style: italic;
+      font-size: 9.8pt;
+    }
+
+    .entry-location {
+      font-size: 9.7pt;
+      font-weight: 400;
+      color: #111111;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .entry-subheader {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 1.5px;
+    }
+
+    .entry-role {
+      font-size: 10pt;
+      font-style: italic;
+      font-weight: 600;
+      color: #111111;
+    }
+
+    .entry-date {
+      font-size: 9.7pt;
+      font-weight: 600;
+      color: #000000;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* ── Bullets ── */
+    ul.bullets {
+      list-style-type: disc;
+      margin-left: 14px;
+      padding-left: 0;
+    }
+
+    ul.bullets li {
+      font-size: 9.45pt;
+      line-height: 1.23;
+      margin-bottom: 1.5px;
+      color: #111111;
+      text-align: justify;
+    }
+
+    ul.bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Compact Earlier Roles ── */
+    .earlier-roles {
+      font-size: 9.8pt;
+      line-height: 1.28;
+      margin-top: 1.5px;
+      color: #111111;
+      text-align: justify;
+    }
+
+    /* ── Technical Skills ── */
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .skill-row {
+      font-size: 9.45pt;
+      line-height: 1.23;
+      color: #111111;
+    }
+
+    /* ── Awards & Education ── */
+    .award-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 9.45pt;
+      line-height: 1.23;
+      margin-bottom: 2px;
+      break-inside: avoid;
+    }
+
+    .award-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .award-left {
+      color: #111111;
+    }
+
+    .award-right {
+      font-size: 9.7pt;
+      font-weight: 600;
+      color: #000000;
+      white-space: nowrap;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <h1>MUNYARADZI LLOYD MAKOSA</h1>
+      <div class="header-subtitle">Senior Full-Stack, AI Systems &amp; Mobile Product Engineer &middot; Independent Contractor Seeking Full-Time Role</div>
+      <div class="contact-line">
+        Cape Town, South Africa (Open to Remote / Relocation)
+        <span class="sep">&middot;</span>
+        +27 65 894 8676
+        <span class="sep">&middot;</span>
+        <a href="mailto:munya@munyamakosa.com">munya@munyamakosa.com</a>
+        <span class="sep">&middot;</span>
+        <a href="https://munyamakosa.com">munyamakosa.com</a>
+        <span class="sep">&middot;</span>
+        <a href="https://github.com/farmhutsoftwareteam">github.com/farmhutsoftwareteam</a>
+        <span class="sep">&middot;</span>
+        <a href="https://www.linkedin.com/in/makosa-munya/">linkedin.com/in/makosa-munya</a>
+      </div>
+    </header>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <div class="summary">
+      <strong>Senior Full-Stack, AI Systems &amp; Mobile Product Engineer</strong> with <strong>7+ years</strong> of experience shipping production SaaS platforms, multi-agent LLM workflows, and native iOS/macOS applications. <strong>Current Status &amp; Career Goal:</strong> Since 2024, operating as a full-time <strong>Independent Product, AI &amp; Mobile Engineering Contractor</strong> (via <strong>Upwork Top Rated Plus</strong> &amp; <strong>Studio 82</strong> &mdash; <strong>$93,500+ USD</strong> in certified annual contract billings; <strong>11,600+ commits</strong> and <strong>5,500+ PRs</strong> shipped across 2024&ndash;2026) embedded as a lead/core engineer with US, European, and African teams. <strong>Now seeking to transition from independent contracting into a single permanent, full-time Senior or Staff Full-Stack, AI Systems, or Mobile Product Engineering role.</strong> Co-founder of <em>Farmhut Africa</em> (<strong>$100,000 Hult Prize Global Winner</strong>, <strong>Techstars</strong>, <strong>Anzisha Prize Fellow</strong>, ~300,000 users) and creator of open-source developer tools (<em>Atelier</em>, <em>Skillshed</em>, <em>AbletonMCP Extended</em>).
+    </div>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section class="section">
+      <h2 class="section-title">Professional Experience &mdash; Independent Contracting &amp; Leadership (2018 &ndash; Present)</h2>
+
+      <!-- Hubflo -->
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-org">Hubflo <span class="entry-org-note">(Independent Contract &middot; Hubflo Studio, Work by Hubflo / WinPal, Hubflo Inbox, Seal AI &amp; FirmAgent)</span></div>
+          <div class="entry-location">Remote (US / France)</div>
+        </div>
+        <div class="entry-subheader">
+          <div class="entry-role">Contract Product &amp; AI Systems Engineer (7,240+ Commits &middot; 2,350+ PRs across 5 Production Products)</div>
+          <div class="entry-date">Apr 2025 &ndash; Present</div>
+        </div>
+        <ul class="bullets">
+          <li><strong>Hubflo Studio (<em>hubflo-workflow</em> &mdash; 1,010+ commits, 1,337+ PRs):</strong> Architected the multi-tenant AI workflow &amp; automation builder and <strong>&ldquo;Flo&rdquo;</strong> conversational AI agent launched to all Hubflo workspace owners at <code>/studio</code>, integrating Inngest durable execution, Supabase RLS, Composio, HubSpot, Pipedrive, Slack, Gmail, Google Drive, OneDrive (approved-folder security), and SmartDocs.</li>
+          <li><strong>WinPal / Work by Hubflo (<em>work-by-hubflo</em> &mdash; 1,760+ commits, 404+ PRs):</strong> Built and shipped the cross-platform iOS/Android (<code>Expo / React Native</code>) and web application enabling SMBs and contractors to generate AI visual renders, estimates, jobs, multi-page PDFs, and invoices with Stripe, RevenueCat, Supabase, PostHog, and full EN/FR localization.</li>
+          <li><strong>Hubflo Inbox (<em>hubflo-inbox</em> &mdash; 1,160+ commits, 565+ PRs), Seal AI (<a href="https://sealhq.ai">sealhq.ai</a> &mdash; 1,010+ commits) &amp; FirmAgent (2,300+ commits):</strong> Built AI-powered shared inbox &amp; Gmail/calendar sync with Trigger.dev; an interactive B2B proposal platform with streaming Slide Agent multi-action editing, view analytics, and e-signatures; and AI voice/chat agents for accounting firms (Twilio voice calls, OpenAI SDK, Calendly, Stripe).</li>
+        </ul>
+      </div>
+
+      <!-- Munga Plains -->
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-org">Munga Plains / Munga Travel <span class="entry-org-note">(Independent Contract &middot; <a href="https://mungaplains.com">mungaplains.com</a> &amp; <a href="https://munga.travel">munga.travel</a>)</span></div>
+          <div class="entry-location">Remote (Botswana / Zimbabwe)</div>
+        </div>
+        <div class="entry-subheader">
+          <div class="entry-role">Contract Lead Platform &amp; AI Engineer (2,172+ PRs/Issues in Munga-AI/munga-ai)</div>
+          <div class="entry-date">Jan 2026 &ndash; Present</div>
+        </div>
+        <ul class="bullets">
+          <li>Sole/lead platform engineer for a luxury yoga safari retreat camp and mobile safari/expedition operator across Chobe National Park, Savuti, Moremi Reserve (Okavango Delta, Botswana), and Matopos (Zimbabwe), leading the multi-tenant operating system onboarding <em>Munga Plains</em> and <em>Munga Safaris</em>.</li>
+          <li><strong>Botswana Department of Tourism Compliance &amp; Bed-Levy Automation:</strong> Engineered the 3-step statutory tourism filing workflow, citizen/resident vs. non-resident guest tracking, room-night and maintenance closure accounting, per-company payroll employee rules, BWP 10/night bed-levy calculation, and accommodation/bar/safari activity revenue splits.</li>
+          <li><strong>Safari Retreat Booking Engine, Partner Lodge &amp; Flight Supplier Portals:</strong> Built direct/B2B retreat booking flows, tracking/discount codes, partner lodge room-block inventory &amp; monthly Trips/Room Needs calendars, and separated <strong>Ethiopian Airlines</strong> flight supplier confirmation portals (<code>ethiopian-portal</code>).</li>
+          <li><strong>Tourism CRM, AI Triage &amp; Multi-Currency Safari Finance:</strong> Built the pursuit/engagement CRM pipeline, <strong>&ldquo;Bulma&rdquo;</strong> modular batch event invitation engine, <strong>&ldquo;Munga Assistant&rdquo;</strong> internal AI bug-triage bot, automated tax invoice PDFs, advance-deposit-to-final-bill reconciliation, <strong>BURS VAT</strong> return filing, <strong>FNB Botswana</strong> bank feed alerts, <strong>Wise</strong> cross-currency transfer accounting, and <strong>Stripe / DPO Pay 3DS / WeTravel</strong> payment gateways.</li>
+        </ul>
+      </div>
+
+      <!-- StrongTrak / GarmanCorp -->
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-org">StrongTrak Inc. / GarmanCorp <span class="entry-org-note">(Independent Contract &middot; Golf Circles, MyTrakrr &amp; Talking Treasure)</span></div>
+          <div class="entry-location">Remote (US)</div>
+        </div>
+        <div class="entry-subheader">
+          <div class="entry-role">Contract Lead Mobile &amp; Full-Stack Engineer (208+ PRs across iOS, Apple Watch &amp; Web)</div>
+          <div class="entry-date">Jul 2024 &ndash; Present</div>
+        </div>
+        <ul class="bullets">
+          <li><strong>Golf Circles (173+ PRs):</strong> Architected the iOS (<code>Expo / React Native</code>) and web (<code>Vite, React, Hono, Supabase</code>) social golf foursome scheduling platform featuring automated backup player promotion, configurable Node weather worker notifications, programmatic SEO enrichment across 12,000+ golf courses (OpenStreetMap + scorecard extraction), and RevenueCat + Stripe Pro subscriptions.</li>
+          <li><strong>MyTrakrr (35+ PRs) &amp; Talking Treasure:</strong> Built a 12-screen iOS &amp; Apple Watch workout tracking app with BLE/NFC gym equipment sensor pairing, compact <code>int4</code> dataframe set telemetry, custom SVG exercise visualizations, and an AI fitness coach, plus an iPhone NFC voice storytelling app with ASCII-mirroring tag validation.</li>
+        </ul>
+      </div>
+
+      <!-- Byrna Technologies -->
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-org">Byrna Technologies (NASDAQ: BYRN) <span class="entry-org-note">(Independent Contract via Upwork &middot; 1,604 Billed Hours)</span></div>
+          <div class="entry-location">Remote (US)</div>
+        </div>
+        <div class="entry-subheader">
+          <div class="entry-role">Contract Frontend Lead &mdash; Retail POS &amp; Commerce Platform (730+ PRs across byrna/pos-front &amp; byrna/commerce)</div>
+          <div class="entry-date">Aug 2024 &ndash; May 2025</div>
+        </div>
+        <ul class="bullets">
+          <li>Led 4 frontend developers migrating Byrna&rsquo;s physical retail stores (Las Vegas, Nashville, Scottsdale, Salem) from Shopify to a custom <strong>Saleor GraphQL + React Native iPad POS</strong> and Node.js commerce backend deployed on Azure Web Apps (shipped through v1.3.2).</li>
+          <li>Engineered offline-capable multi-store channel switching, complex promo/discount and order refund workflows, XML thermal receipt printing, and an open-source payment terminal simulator (<code>payment-terminal-mocker</code>).</li>
+        </ul>
+      </div>
+
+      <!-- Freyt365 & Additional Contracts -->
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-org">Freyt365 &amp; Studio 82 Client Engineering <span class="entry-org-note">(<a href="https://freyt365.com">freyt365.com</a> &middot; <a href="https://www.s82.studio">s82.studio</a> &middot; Rate.com &middot; HSTV &middot; Verde-Tech)</span></div>
+          <div class="entry-location">Southern Africa / US / Remote</div>
+        </div>
+        <div class="entry-subheader">
+          <div class="entry-role">Co-Founder &amp; Lead Platform Engineer (Freyt365) &middot; Principal Consultant (Studio 82 &amp; Upwork)</div>
+          <div class="entry-date">Oct 2023 &ndash; Present</div>
+        </div>
+        <ul class="bullets">
+          <li><strong>Freyt365 (<a href="https://freyt365.com">freyt365.com</a> &mdash; 120+ PRs in <em>freyt365-v2</em>):</strong> Co-founded and architected a Southern African cross-border freight and diesel fuel fintech platform, shipping a verified <strong>WhatsApp AI tool assistant</strong>, native <strong>WhatsApp Flows for diesel orders &amp; UNO fuel station voucher photo rendering</strong> (Livingstone corridor), and an operator cockpit.</li>
+          <li><strong>Rate.com Lead-Gen &amp; Analytics (102+ PRs, 2024&ndash;2025), HSTV (140+ commits, 2023&ndash;2024) &amp; Verde-Tech Bulto (70+ commits, 2024):</strong> Built high-conversion mortgage/refinance lead-gen funnels with OTP phone verification and PostHog/Supabase pipelines (<code>rdotcom-leadgen-0.1</code>); a mobile/web video streaming platform with Azure Blob Storage SAS direct uploads (<code>HSTV</code>); and a <strong>Rust + Python</strong> GraphQL agricultural credit-scoring API (<code>Bulto</code>).</li>
+        </ul>
+      </div>
+
+      <!-- Farmhut Africa -->
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-org">Farmhut Africa <span class="entry-org-note">(Techstars-Backed &middot; Featured on CNN Connecting Africa)</span></div>
+          <div class="entry-location">Harare &amp; Bulawayo, Zimbabwe</div>
+        </div>
+        <div class="entry-subheader">
+          <div class="entry-role">Co-Founder, CTO &amp; Product Lead (150+ Commits across 6 Microservices)</div>
+          <div class="entry-date">2019 &ndash; May 2024</div>
+        </div>
+        <ul class="bullets">
+          <li>Co-founded an AI and WhatsApp-powered agricultural marketplace connecting rural smallholder farmers directly to buyers; scaled to <strong>~300,000 users</strong> with the Zimbabwe Farmers Union, raised <strong>$250,000+</strong>, and built Node.js/Express &amp; Python AI backends (OpenAI Vision crop disease diagnostics, dynamic pricing, and haulage matching).</li>
+          <li>Won the <strong>$100,000 USD Hult Prize Global Award (2021)</strong>, named <strong>Anzisha Prize Fellow (Top 26 African Entrepreneurs)</strong>, and recognized by <strong>MIT Solve</strong> and the <strong>UN75 Award</strong>.</li>
+        </ul>
+      </div>
+
+      <!-- Earlier Engineering Roles -->
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-org">Earlier Engineering Roles</div>
+          <div class="entry-location">UK &amp; Zimbabwe</div>
+        </div>
+        <div class="earlier-roles">
+          <strong>Kwingy (UK)</strong> (<em>Co-Founder &amp; Technical Lead</em>, <a href="https://www.kwingy.com">kwingy.com</a>, 2022&ndash;2024: Next.js, React Native, Hono, and Supabase delivery for UK/African clients) &middot;
+          <strong>Raysun Capital</strong> (<em>Lead Developer &mdash; Loan Management System</em>, 2019&ndash;2020: credit risk scoring and portfolio management in React, Node.js, and PostgreSQL) &middot;
+          <strong>Zimbabwe Yellow Pages</strong> (<em>Software Developer</em>, 2018&ndash;2019: print-to-digital directory migration).
+        </div>
+      </div>
+    </section>
+
+    <!-- OPEN-SOURCE & INDEPENDENT PRODUCTS -->
+    <section class="section">
+      <h2 class="section-title">Selected Independent Products &amp; Open-Source Systems (Verified Live Deployments)</h2>
+      <ul class="bullets">
+        <li><strong>Atelier (<em>work-for-claude-code</em> &mdash; 370+ commits, v2.11.6):</strong> Native macOS SwiftUI/SwiftTerm companion workspace for Claude Code &amp; Codex across 40 Apple-notarized Sparkle releases, featuring plain-English file diffs, live localhost preview, 93 one-click vetted skills, and scheduled routines (<a href="https://atelier.munyamakosa.com">atelier.munyamakosa.com</a> / <a href="https://work.munyamakosa.com">work.munyamakosa.com</a>).</li>
+        <li><strong>Khayalo (<a href="https://www.khayalo.com">khayalo.com</a> &mdash; 160+ commits, 257+ issues/PRs):</strong> Multi-tenant AI customer service, lead follow-up, and content system for Southern African law firms, clinics, and insurers, featuring WhatsApp/SMS human-in-the-loop approval flows (Twilio webhooks) and calendar availability tools.</li>
+        <li><strong>Skillshed (<a href="https://skillshed.munyamakosa.com">skillshed.munyamakosa.com</a> &mdash; 40+ commits):</strong> Curated library of 81 vetted AI agent skills across 6 packs with a zero-dependency static prompt-injection scanner (<code>scan-skills.mjs</code>) and LLM evaluation benchmarks lifting pass rates from <strong>85% to 97%</strong> on PostgreSQL RLS tasks.</li>
+        <li><strong>AbletonMCP Extended (PyPI <code>v1.0.0</code>, 30+ commits) &amp; Supabase Migration Doctor:</strong> 38-tool bidirectional Python Model Context Protocol (MCP) server for Ableton Live over TCP sockets, and a TypeScript CLI diagnostic tool for healing PostgreSQL schema-vs-migration drift.</li>
+        <li><strong>Shipped Consumer iOS Apps &amp; Web Products:</strong> <strong>Nurvy</strong> (<a href="https://apps.apple.com/us/app/nurvy/id6755494186">App Store</a>), <strong>Nomm</strong> (<a href="https://apps.apple.com/us/app/nomm/id6742806742">App Store</a>), <strong>Ten-S</strong> (<a href="https://apps.apple.com/us/app/ten-s/id6473734541">App Store</a>), <strong>Stubs</strong> (<a href="https://stubs.munyamakosa.com">stubs.munyamakosa.com</a> &mdash; 80+ commits, iOS/Expo football match stub tracker), <strong>Menyu</strong> (<a href="https://menyu.site">menyu.site</a> &mdash; restaurant QR menu SaaS), <strong>CuePoint &amp; Crates</strong> (<a href="https://dj.munyamakosa.com">dj.munyamakosa.com</a> &mdash; Claude DJ tracklist &amp; crate intelligence), <strong>Rackup</strong> (<a href="https://rackup.money">rackup.money</a>), and <strong>Dumbshirts 3D</strong> (<a href="https://dumbshirts.co.za">dumbshirts.co.za</a>).</li>
+      </ul>
+    </section>
+
+    <!-- TECHNICAL SKILLS -->
+    <section class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-list">
+        <div class="skill-row"><strong>Languages:</strong> TypeScript, JavaScript (ES2024), Swift, Python, SQL (PostgreSQL), Rust, HTML5, CSS3, Bash</div>
+        <div class="skill-row"><strong>AI &amp; Agentic Systems:</strong> Model Context Protocol (MCP), Anthropic Claude API, OpenAI API, Claude Code &amp; Codex SDKs, LangChain, Composio, LLM Evals, Prompt-Injection Security, RAG</div>
+        <div class="skill-row"><strong>Frontend, Mobile &amp; Desktop:</strong> React, Next.js (App Router), React Native, Expo, SwiftUI, AppKit, SwiftTerm, Vite, Tailwind CSS, Three.js / WebGL</div>
+        <div class="skill-row"><strong>Backend, Data &amp; Infrastructure:</strong> Node.js, Hono, Supabase (PostgreSQL, RLS, Edge Functions), Inngest, Trigger.dev, Saleor GraphQL, Django, Express, Docker, Vercel, Azure, Cloudflare, Stripe, RevenueCat, Wise &amp; WhatsApp Cloud APIs</div>
+      </div>
+    </section>
+
+    <!-- AWARDS, FELLOWSHIPS & EDUCATION -->
+    <section class="section">
+      <h2 class="section-title">Awards, Fellowships, Certifications &amp; Education</h2>
+
+      <div class="award-entry">
+        <div class="award-left"><strong>Upwork Top Rated Plus Contractor ($93,549 USD Certified 12-Month Earnings &middot; $100k+ Lifetime)</strong> &mdash; Top 3% Globally</div>
+        <div class="award-right">2022 &ndash; 2026</div>
+      </div>
+
+      <div class="award-entry">
+        <div class="award-left"><strong>Hult Prize Global Winner ($100,000 USD Award)</strong> &mdash; Hult International Business School (Selected from 300,000+ competitors)</div>
+        <div class="award-right">2021</div>
+      </div>
+
+      <div class="award-entry">
+        <div class="award-left"><strong>Anzisha Prize Fellow (Top 26 Young African Entrepreneurs)</strong> &mdash; African Leadership Academy &amp; Mastercard Foundation</div>
+        <div class="award-right">2021</div>
+      </div>
+
+      <div class="award-entry">
+        <div class="award-left"><strong>MIT Solve &amp; UN75 &ldquo;The Future We Want&rdquo; Award</strong> &mdash; United Nations 75th Anniversary &amp; University World Cup of Startups</div>
+        <div class="award-right">2020</div>
+      </div>
+
+      <div class="award-entry">
+        <div class="award-left"><strong>National University of Science &amp; Technology (NUST)</strong> &mdash; BSc (Hons) Chemical Engineering coursework (departed to scale Farmhut Africa after global accelerator selection)</div>
+        <div class="award-right">2018 &ndash; 2020</div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
