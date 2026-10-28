@@ -116,6 +116,16 @@
       box-shadow: 0 2px 8px rgba(13,148,136,0.4);
     }
 
+    .btn-quiet {
+      background: transparent;
+      color: #CBD5E1;
+      border: 1px solid #334155;
+    }
+    .btn-quiet:hover {
+      color: var(--white);
+      border-color: #64748B;
+    }
+
     /* ─────────────────── PAGE ─────────────────── */
     .page {
       max-width: 980px;
@@ -507,6 +517,11 @@
       .topbar-divider, .topbar-label { display: none; }
       .main { padding: 20px 18px; }
     }
+
+    @media (max-width: 560px) {
+      .btn-quiet { display: none; }
+      .btn { padding: 7px 10px; }
+    }
   </style>
 </head>
 <body>
@@ -522,10 +537,14 @@
       <span class="topbar-label">Munyaradzi Makosa — CV 2026</span>
     </div>
     <div class="topbar-right">
-      <button class="btn btn-primary" onclick="window.print()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download PDF
+      <button class="btn btn-quiet" type="button" onclick="window.print()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print Web View
       </button>
+      <a href="/Munyaradzi_Makosa_CV_2026.pdf" download="Munyaradzi_Makosa_CV_2026.pdf" class="btn btn-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Harvard PDF
+      </a>
     </div>
   </div>
 
